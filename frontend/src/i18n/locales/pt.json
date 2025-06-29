@@ -1,0 +1,348 @@
+{
+  "app": {
+    "title": "Classificador de Cogumelos",
+    "language": "Idioma:",
+    "tabs": {
+      "single": "Predição Individual",
+      "batch": "Predição em Lote",
+      "metrics": "Métricas"
+    }
+  },
+  "singlePrediction": {
+    "title": "Classificação de Cogumelos",
+    "sections": {
+      "cap": "Chapéu do Cogumelo",
+      "gills": "Lâminas (Gills)",
+      "stalk": "Caule (Stalk)",
+      "other": "Outras Características",
+      "rings": "Anéis e Esporos"
+    },
+    "fields": {
+      "cap-shape": "Forma do Chapéu",
+      "cap-surface": "Superfície do Chapéu",
+      "cap-color": "Cor do Chapéu",
+      "bruises": "Machucados",
+      "odor": "Odor",
+      "gill-attachment": "Anexo das Lâminas",
+      "gill-spacing": "Espaçamento das Lâminas",
+      "gill-size": "Tamanho das Lâminas",
+      "gill-color": "Cor das Lâminas",
+      "stalk-shape": "Forma do Caule",
+      "stalk-root": "Raiz do Caule",
+      "stalk-surface-above-ring": "Superfície do Caule (Acima do Anel)",
+      "stalk-surface-below-ring": "Superfície do Caule (Abaixo do Anel)",
+      "stalk-color-above-ring": "Cor do Caule (Acima do Anel)",
+      "stalk-color-below-ring": "Cor do Caule (Abaixo do Anel)",
+      "veil-color": "Cor do Véu",
+      "ring-number": "Número de Anéis",
+      "ring-type": "Tipo de Anel",
+      "spore-print-color": "Cor da Impressão de Esporos",
+      "population": "População",
+      "habitat": "Habitat"
+    },
+    "placeholders": {
+      "selectShape": "Selecione a forma",
+      "selectSurface": "Selecione a superfície",
+      "selectColor": "Selecione a cor",
+      "selectBruises": "Selecione",
+      "selectOdor": "Selecione o odor",
+      "selectAttachment": "Selecione o anexo",
+      "selectSpacing": "Selecione o espaçamento",
+      "selectSize": "Selecione o tamanho",
+      "selectRoot": "Selecione a raiz",
+      "selectNumber": "Selecione o número",
+      "selectType": "Selecione o tipo",
+      "selectPopulation": "Selecione a população",
+      "selectHabitat": "Selecione o habitat"
+    },
+    "buttons": {
+      "analyze": "Analisar Cogumelo",
+      "clear": "Limpar Formulário"
+    },
+    "loading": "Analisando...",
+    "errors": {
+      "fillAllFields": "Por favor, preencha todos os campos obrigatórios.",
+      "predictionError": "Erro ao realizar predição"
+    },
+    "success": {
+      "title": "Predição realizada com sucesso!",
+      "edible": "comestível",
+      "poisonous": "venenoso"
+    },
+    "results": {
+      "edible": "✅ Comestível",
+      "poisonous": "☠️ Venenoso",
+      "classifiedAs": "Este cogumelo foi classificado como",
+      "analysisTime": "Análise realizada em:"
+    }
+  },
+  "batchPrediction": {
+    "title": "Predição em Lote",
+    "description": "Faça upload de um arquivo CSV com múltiplos cogumelos para classificação em lote",
+    "uploadFile": "Upload de Arquivo",
+    "dragDropFile": "Arraste e solte um arquivo aqui",
+    "clickToSelect": "ou clique para selecionar um arquivo",
+    "supportedFormats": "Formatos suportados: CSV, XLS, XLSX",
+    "fileUploaded": "Arquivo carregado",
+    "removeFile": "Remover arquivo",
+    "csvData": "Dados CSV",
+    "csvPlaceholder": "Cole aqui os dados CSV dos cogumelos...",
+    "csvFormat": "Formato esperado: primeira linha com cabeçalhos, seguida pelos dados dos cogumelos",
+    "classify": "Classificar em Lote",
+    "processing": "Processando...",
+    "errors": {
+      "invalidCsv": "Por favor, insira dados CSV válidos",
+      "batchError": "Erro ao fazer predições em lote",
+      "invalidFileType": "Tipo de arquivo não suportado",
+      "supportedFormats": "Por favor, use arquivos CSV, XLS ou XLSX",
+      "excelNotSupported": "Arquivos Excel não suportados",
+      "convertToCsv": "Por favor, converta para CSV antes de fazer upload",
+      "fileReadError": "Erro ao ler arquivo",
+      "unknownError": "Erro desconhecido"
+    },
+    "success": {
+      "title": "Predições realizadas com sucesso!",
+      "description": "{{count}} cogumelos foram classificados",
+      "fileUploaded": "Arquivo carregado com sucesso!",
+      "fileProcessed": "Arquivo {{filename}} processado com sucesso"
+    },
+    "results": {
+      "title": "Resultados ({{count}} cogumelos)",
+      "number": "#",
+      "classification": "Classificação",
+      "capColor": "Cor do Chapéu",
+      "odor": "Odor",
+      "capShape": "Forma do Chapéu",
+      "status": "Status",
+      "timestamp": "Timestamp",
+      "edible": "Comestível",
+      "poisonous": "Venenoso",
+      "edibleCount": "Comestíveis",
+      "poisonousCount": "Venenosos",
+      "mushrooms": "cogumelos",
+      "actions": "Ações",
+      "viewDetails": "Ver detalhes"
+    },
+    "details": {
+      "title": "Detalhes do Cogumelo #{{number}}",
+      "edible": "Comestível",
+      "poisonous": "Venenoso",
+      "predictionMade": "Predição realizada com sucesso",
+      "close": "Fechar"
+    }
+  },
+  "metrics": {
+    "title": "Métricas do Modelo",
+    "description": "Performance e estatísticas do modelo de classificação",
+    "refresh": "Recalcular Métricas",
+    "loading": "Carregando métricas...",
+    "recalculating": "Recalculando métricas...",
+    "errors": {
+      "loadError": "Erro ao carregar métricas",
+      "recalculateError": "Erro ao recalcular métricas"
+    },
+    "success": {
+      "recalculated": "Métricas atualizadas!",
+      "recalculatedMessage": "As métricas foram recalculadas com sucesso usando o modelo atual"
+    },
+    "warning": "Aviso",
+    "noMetrics": "Nenhuma métrica disponível",
+    "noMetricsDescription": "As métricas do modelo ainda não foram calculadas ou não estão disponíveis.",
+    "stats": {
+      "accuracy": "Precisão",
+      "f1Score": "F1-Score",
+      "precision": "Precisão",
+      "recall": "Recall",
+      "datasetSize": "Tamanho do Dataset",
+      "featuresUsed": "Características Utilizadas",
+      "testSamples": "Amostras de Teste"
+    },
+    "helpText": {
+      "accuracy": "Taxa de acerto geral",
+      "f1Score": "Média harmônica entre precisão e recall",
+      "precision": "Taxa de verdadeiros positivos",
+      "recall": "Taxa de detecção de positivos",
+      "datasetSize": "Número de amostras de treinamento",
+      "featuresUsed": "Número de features do modelo",
+      "testSamples": "Número de amostras usadas no teste"
+    },
+    "modelInfo": {
+      "title": "Informações do Modelo",
+      "modelType": "Tipo do Modelo",
+      "lastUpdate": "Última Atualização"
+    },
+    "classDistribution": {
+      "title": "Distribuição de Classes",
+      "edible": "Comestíveis",
+      "poisonous": "Venenosos"
+    }
+  },
+  "mushroomOptions": {
+    "cap-shape": {
+      "Bell": "Sino",
+      "Conical": "Cônico",
+      "Convex": "Convexo",
+      "Flat": "Plano",
+      "Knobbed": "Com protuberância",
+      "Sunken": "Afundado"
+    },
+    "cap-surface": {
+      "Fibrous": "Fibroso",
+      "Grooves": "Com sulcos",
+      "Scaly": "Escamoso",
+      "Smooth": "Liso"
+    },
+    "cap-color": {
+      "Brown": "Marrom",
+      "Buff": "Bege",
+      "Cinnamon": "Canela",
+      "Gray": "Cinza",
+      "Green": "Verde",
+      "Pink": "Rosa",
+      "Purple": "Roxo",
+      "Red": "Vermelho",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "bruises": {
+      "Bruises": "Sim",
+      "No Bruises": "Não"
+    },
+    "odor": {
+      "Almond": "Amêndoa",
+      "Anise": "Anis",
+      "Creosote": "Creosoto",
+      "Fishy": "Peixe",
+      "Foul": "Fétido",
+      "Musty": "Mofado",
+      "None": "Nenhum",
+      "Pungent": "Pungente",
+      "Spicy": "Picante"
+    },
+    "gill-attachment": {
+      "Attached": "Anexado",
+      "Descending": "Descendente",
+      "Free": "Livre",
+      "Notched": "Entalhado"
+    },
+    "gill-spacing": {
+      "Close": "Fechado",
+      "Crowded": "Aglomerado",
+      "Distant": "Distante"
+    },
+    "gill-size": {
+      "Broad": "Largo",
+      "Narrow": "Estreito"
+    },
+    "gill-color": {
+      "Black": "Preto",
+      "Brown": "Marrom",
+      "Buff": "Bege",
+      "Chocolate": "Chocolate",
+      "Gray": "Cinza",
+      "Green": "Verde",
+      "Orange": "Laranja",
+      "Pink": "Rosa",
+      "Purple": "Roxo",
+      "Red": "Vermelho",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "stalk-shape": {
+      "Enlarging": "Alargando",
+      "Tapering": "Afunilando"
+    },
+    "stalk-root": {
+      "Bulbous": "Bulboso",
+      "Club": "Clavado",
+      "Cup": "Copo",
+      "Equal": "Igual",
+      "Rhizomorphs": "Rizomorfos",
+      "Rooted": "Enraizado",
+      "Missing": "Ausente"
+    },
+    "stalk-surface-above-ring": {
+      "Fibrous": "Fibroso",
+      "Scaly": "Escamoso",
+      "Silky": "Sedoso",
+      "Smooth": "Liso"
+    },
+    "stalk-surface-below-ring": {
+      "Fibrous": "Fibroso",
+      "Scaly": "Escamoso",
+      "Silky": "Sedoso",
+      "Smooth": "Liso"
+    },
+    "stalk-color-above-ring": {
+      "Brown": "Marrom",
+      "Buff": "Bege",
+      "Cinnamon": "Canela",
+      "Gray": "Cinza",
+      "Orange": "Laranja",
+      "Pink": "Rosa",
+      "Red": "Vermelho",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "stalk-color-below-ring": {
+      "Brown": "Marrom",
+      "Buff": "Bege",
+      "Cinnamon": "Canela",
+      "Gray": "Cinza",
+      "Orange": "Laranja",
+      "Pink": "Rosa",
+      "Red": "Vermelho",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "veil-color": {
+      "Brown": "Marrom",
+      "Orange": "Laranja",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "ring-number": {
+      "None": "Nenhum",
+      "One": "Um",
+      "Two": "Dois"
+    },
+    "ring-type": {
+      "Cobwebby": "Teia de aranha",
+      "Evanescent": "Evanescente",
+      "Flaring": "Alargado",
+      "Large": "Grande",
+      "None": "Nenhum",
+      "Pendant": "Pendente",
+      "Sheathing": "Bainha",
+      "Zone": "Zona"
+    },
+    "spore-print-color": {
+      "Black": "Preto",
+      "Brown": "Marrom",
+      "Buff": "Bege",
+      "Chocolate": "Chocolate",
+      "Green": "Verde",
+      "Orange": "Laranja",
+      "Purple": "Roxo",
+      "White": "Branco",
+      "Yellow": "Amarelo"
+    },
+    "population": {
+      "Abundant": "Abundante",
+      "Clustered": "Agrupado",
+      "Numerous": "Numeroso",
+      "Scattered": "Espalhado",
+      "Several": "Vários",
+      "Solitary": "Solitário"
+    },
+    "habitat": {
+      "Grasses": "Gramíneas",
+      "Leaves": "Folhas",
+      "Meadows": "Prados",
+      "Paths": "Caminhos",
+      "Urban": "Urbano",
+      "Waste": "Lixo",
+      "Woods": "Bosques"
+    }
+  }
+}

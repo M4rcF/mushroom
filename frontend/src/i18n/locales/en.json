@@ -1,0 +1,348 @@
+{
+  "app": {
+    "title": "Mushroom Classifier",
+    "language": "Language:",
+    "tabs": {
+      "single": "Single Prediction",
+      "batch": "Batch Prediction",
+      "metrics": "Metrics"
+    }
+  },
+  "singlePrediction": {
+    "title": "Mushroom Classification",
+    "sections": {
+      "cap": "Mushroom Cap",
+      "gills": "Gills",
+      "stalk": "Stalk",
+      "other": "Other Characteristics",
+      "rings": "Rings and Spores"
+    },
+    "fields": {
+      "cap-shape": "Cap Shape",
+      "cap-surface": "Cap Surface",
+      "cap-color": "Cap Color",
+      "bruises": "Bruises",
+      "odor": "Odor",
+      "gill-attachment": "Gill Attachment",
+      "gill-spacing": "Gill Spacing",
+      "gill-size": "Gill Size",
+      "gill-color": "Gill Color",
+      "stalk-shape": "Stalk Shape",
+      "stalk-root": "Stalk Root",
+      "stalk-surface-above-ring": "Stalk Surface Above Ring",
+      "stalk-surface-below-ring": "Stalk Surface Below Ring",
+      "stalk-color-above-ring": "Stalk Color Above Ring",
+      "stalk-color-below-ring": "Stalk Color Below Ring",
+      "veil-color": "Veil Color",
+      "ring-number": "Ring Number",
+      "ring-type": "Ring Type",
+      "spore-print-color": "Spore Print Color",
+      "population": "Population",
+      "habitat": "Habitat"
+    },
+    "placeholders": {
+      "selectShape": "Select shape",
+      "selectSurface": "Select surface",
+      "selectColor": "Select color",
+      "selectBruises": "Select",
+      "selectOdor": "Select odor",
+      "selectAttachment": "Select attachment",
+      "selectSpacing": "Select spacing",
+      "selectSize": "Select size",
+      "selectRoot": "Select root",
+      "selectNumber": "Select number",
+      "selectType": "Select type",
+      "selectPopulation": "Select population",
+      "selectHabitat": "Select habitat"
+    },
+    "buttons": {
+      "analyze": "Analyze Mushroom",
+      "clear": "Clear Form"
+    },
+    "loading": "Analyzing...",
+    "errors": {
+      "fillAllFields": "Please fill in all required fields.",
+      "predictionError": "Error performing prediction"
+    },
+    "success": {
+      "title": "Prediction completed successfully!",
+      "edible": "edible",
+      "poisonous": "poisonous"
+    },
+    "results": {
+      "edible": "✅ Edible",
+      "poisonous": "☠️ Poisonous",
+      "classifiedAs": "This mushroom was classified as",
+      "analysisTime": "Analysis performed at:"
+    }
+  },
+  "batchPrediction": {
+    "title": "Batch Prediction",
+    "description": "Upload a CSV file with multiple mushrooms for batch classification",
+    "uploadFile": "File Upload",
+    "dragDropFile": "Drag and drop a file here",
+    "clickToSelect": "or click to select a file",
+    "supportedFormats": "Supported formats: CSV, XLS, XLSX",
+    "fileUploaded": "File uploaded",
+    "removeFile": "Remove file",
+    "csvData": "CSV Data",
+    "csvPlaceholder": "Paste CSV data of mushrooms here...",
+    "csvFormat": "Expected format: first line with headers, followed by mushroom data",
+    "classify": "Batch Classify",
+    "processing": "Processing...",
+    "errors": {
+      "invalidCsv": "Please enter valid CSV data",
+      "batchError": "Error performing batch predictions",
+      "invalidFileType": "Unsupported file type",
+      "supportedFormats": "Please use CSV, XLS or XLSX files",
+      "excelNotSupported": "Excel files not supported",
+      "convertToCsv": "Please convert to CSV before uploading",
+      "fileReadError": "Error reading file",
+      "unknownError": "Unknown error"
+    },
+    "success": {
+      "title": "Predictions completed successfully!",
+      "description": "{{count}} mushrooms were classified",
+      "fileUploaded": "File uploaded successfully!",
+      "fileProcessed": "File {{filename}} processed successfully"
+    },
+    "results": {
+      "title": "Results ({{count}} mushrooms)",
+      "number": "#",
+      "classification": "Classification",
+      "capColor": "Cap Color",
+      "odor": "Odor",
+      "capShape": "Cap Shape",
+      "status": "Status",
+      "timestamp": "Timestamp",
+      "edible": "Edible",
+      "poisonous": "Poisonous",
+      "edibleCount": "Edible",
+      "poisonousCount": "Poisonous",
+      "mushrooms": "mushrooms",
+      "actions": "Actions",
+      "viewDetails": "View details"
+    },
+    "details": {
+      "title": "Mushroom Details #{{number}}",
+      "edible": "Edible",
+      "poisonous": "Poisonous",
+      "predictionMade": "Prediction completed successfully",
+      "close": "Close"
+    }
+  },
+  "metrics": {
+    "title": "Model Metrics",
+    "description": "Performance and statistics of the classification model",
+    "refresh": "Recalculate Metrics",
+    "loading": "Loading metrics...",
+    "recalculating": "Recalculating metrics...",
+    "errors": {
+      "loadError": "Error loading metrics",
+      "recalculateError": "Error recalculating metrics"
+    },
+    "success": {
+      "recalculated": "Metrics updated!",
+      "recalculatedMessage": "Metrics were successfully recalculated using the current model"
+    },
+    "warning": "Warning",
+    "noMetrics": "No metrics available",
+    "noMetricsDescription": "Model metrics have not been calculated yet or are not available.",
+    "stats": {
+      "accuracy": "Accuracy",
+      "f1Score": "F1-Score",
+      "precision": "Precision",
+      "recall": "Recall",
+      "datasetSize": "Dataset Size",
+      "featuresUsed": "Features Used",
+      "testSamples": "Test Samples"
+    },
+    "helpText": {
+      "accuracy": "Overall accuracy rate",
+      "f1Score": "Harmonic mean between precision and recall",
+      "precision": "True positive rate",
+      "recall": "Detection rate of positives",
+      "datasetSize": "Number of training samples",
+      "featuresUsed": "Number of model features",
+      "testSamples": "Number of samples used in testing"
+    },
+    "modelInfo": {
+      "title": "Model Information",
+      "modelType": "Model Type",
+      "lastUpdate": "Last Update"
+    },
+    "classDistribution": {
+      "title": "Class Distribution",
+      "edible": "Edible",
+      "poisonous": "Poisonous"
+    }
+  },
+  "mushroomOptions": {
+    "cap-shape": {
+      "Bell": "Bell",
+      "Conical": "Conical",
+      "Convex": "Convex",
+      "Flat": "Flat",
+      "Knobbed": "Knobbed",
+      "Sunken": "Sunken"
+    },
+    "cap-surface": {
+      "Fibrous": "Fibrous",
+      "Grooves": "Grooves",
+      "Scaly": "Scaly",
+      "Smooth": "Smooth"
+    },
+    "cap-color": {
+      "Brown": "Brown",
+      "Buff": "Buff",
+      "Cinnamon": "Cinnamon",
+      "Gray": "Gray",
+      "Green": "Green",
+      "Pink": "Pink",
+      "Purple": "Purple",
+      "Red": "Red",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "bruises": {
+      "Bruises": "Yes",
+      "No Bruises": "No"
+    },
+    "odor": {
+      "Almond": "Almond",
+      "Anise": "Anise",
+      "Creosote": "Creosote",
+      "Fishy": "Fishy",
+      "Foul": "Foul",
+      "Musty": "Musty",
+      "None": "None",
+      "Pungent": "Pungent",
+      "Spicy": "Spicy"
+    },
+    "gill-attachment": {
+      "Attached": "Attached",
+      "Descending": "Descending",
+      "Free": "Free",
+      "Notched": "Notched"
+    },
+    "gill-spacing": {
+      "Close": "Close",
+      "Crowded": "Crowded",
+      "Distant": "Distant"
+    },
+    "gill-size": {
+      "Broad": "Broad",
+      "Narrow": "Narrow"
+    },
+    "gill-color": {
+      "Black": "Black",
+      "Brown": "Brown",
+      "Buff": "Buff",
+      "Chocolate": "Chocolate",
+      "Gray": "Gray",
+      "Green": "Green",
+      "Orange": "Orange",
+      "Pink": "Pink",
+      "Purple": "Purple",
+      "Red": "Red",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "stalk-shape": {
+      "Enlarging": "Enlarging",
+      "Tapering": "Tapering"
+    },
+    "stalk-root": {
+      "Bulbous": "Bulbous",
+      "Club": "Club",
+      "Cup": "Cup",
+      "Equal": "Equal",
+      "Rhizomorphs": "Rhizomorphs",
+      "Rooted": "Rooted",
+      "Missing": "Missing"
+    },
+    "stalk-surface-above-ring": {
+      "Fibrous": "Fibrous",
+      "Scaly": "Scaly",
+      "Silky": "Silky",
+      "Smooth": "Smooth"
+    },
+    "stalk-surface-below-ring": {
+      "Fibrous": "Fibrous",
+      "Scaly": "Scaly",
+      "Silky": "Silky",
+      "Smooth": "Smooth"
+    },
+    "stalk-color-above-ring": {
+      "Brown": "Brown",
+      "Buff": "Buff",
+      "Cinnamon": "Cinnamon",
+      "Gray": "Gray",
+      "Orange": "Orange",
+      "Pink": "Pink",
+      "Red": "Red",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "stalk-color-below-ring": {
+      "Brown": "Brown",
+      "Buff": "Buff",
+      "Cinnamon": "Cinnamon",
+      "Gray": "Gray",
+      "Orange": "Orange",
+      "Pink": "Pink",
+      "Red": "Red",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "veil-color": {
+      "Brown": "Brown",
+      "Orange": "Orange",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "ring-number": {
+      "None": "None",
+      "One": "One",
+      "Two": "Two"
+    },
+    "ring-type": {
+      "Cobwebby": "Cobwebby",
+      "Evanescent": "Evanescent",
+      "Flaring": "Flaring",
+      "Large": "Large",
+      "None": "None",
+      "Pendant": "Pendant",
+      "Sheathing": "Sheathing",
+      "Zone": "Zone"
+    },
+    "spore-print-color": {
+      "Black": "Black",
+      "Brown": "Brown",
+      "Buff": "Buff",
+      "Chocolate": "Chocolate",
+      "Green": "Green",
+      "Orange": "Orange",
+      "Purple": "Purple",
+      "White": "White",
+      "Yellow": "Yellow"
+    },
+    "population": {
+      "Abundant": "Abundant",
+      "Clustered": "Clustered",
+      "Numerous": "Numerous",
+      "Scattered": "Scattered",
+      "Several": "Several",
+      "Solitary": "Solitary"
+    },
+    "habitat": {
+      "Grasses": "Grasses",
+      "Leaves": "Leaves",
+      "Meadows": "Meadows",
+      "Paths": "Paths",
+      "Urban": "Urban",
+      "Waste": "Waste",
+      "Woods": "Woods"
+    }
+  }
+}

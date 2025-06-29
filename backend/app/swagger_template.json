@@ -1,0 +1,720 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "🍄 Classificador de Cogumelos API",
+    "description": "API para classificação de cogumelos usando Machine Learning. Permite predição individual e em lote, além de visualização de métricas do modelo.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "support@mushroom-classifier.com"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/predict": {
+      "post": {
+        "tags": ["Predição"],
+        "summary": "Predição Individual",
+        "description": "Faz predição individual de um cogumelo baseado em suas características morfológicas",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "cap-shape", "cap-surface", "cap-color", "bruises", "odor",
+                "gill-attachment", "gill-spacing", "gill-size", "gill-color",
+                "stalk-shape", "stalk-root", "stalk-surface-above-ring", "stalk-surface-below-ring",
+                "stalk-color-above-ring", "stalk-color-below-ring", "veil-color",
+                "ring-number", "ring-type", "spore-print-color", "population", "habitat"
+              ],
+              "properties": {
+                "cap-shape": {
+                  "type": "string",
+                  "description": "Forma do chapéu",
+                  "enum": ["b", "c", "x", "f", "k", "s"],
+                  "example": "x"
+                },
+                "cap-surface": {
+                  "type": "string",
+                  "description": "Superfície do chapéu",
+                  "enum": ["f", "g", "y", "s"],
+                  "example": "s"
+                },
+                "cap-color": {
+                  "type": "string",
+                  "description": "Cor do chapéu",
+                  "enum": ["n", "b", "c", "g", "r", "p", "u", "e", "w", "y"],
+                  "example": "y"
+                },
+                "bruises": {
+                  "type": "string",
+                  "description": "Machucados",
+                  "enum": ["t", "f"],
+                  "example": "t"
+                },
+                "odor": {
+                  "type": "string",
+                  "description": "Odor",
+                  "enum": ["a", "l", "c", "y", "f", "m", "n", "p", "s"],
+                  "example": "p"
+                },
+                "gill-attachment": {
+                  "type": "string",
+                  "description": "Anexo das lâminas",
+                  "enum": ["a", "d", "f", "n"],
+                  "example": "f"
+                },
+                "gill-spacing": {
+                  "type": "string",
+                  "description": "Espaçamento das lâminas",
+                  "enum": ["c", "w", "d"],
+                  "example": "c"
+                },
+                "gill-size": {
+                  "type": "string",
+                  "description": "Tamanho das lâminas",
+                  "enum": ["b", "n"],
+                  "example": "n"
+                },
+                "gill-color": {
+                  "type": "string",
+                  "description": "Cor das lâminas",
+                  "enum": ["k", "n", "b", "h", "g", "r", "o", "p", "u", "e", "w", "y"],
+                  "example": "k"
+                },
+                "stalk-shape": {
+                  "type": "string",
+                  "description": "Forma do caule",
+                  "enum": ["e", "t"],
+                  "example": "e"
+                },
+                "stalk-root": {
+                  "type": "string",
+                  "description": "Raiz do caule",
+                  "enum": ["b", "c", "u", "e", "z", "r", "?"],
+                  "example": "e"
+                },
+                "stalk-surface-above-ring": {
+                  "type": "string",
+                  "description": "Superfície do caule (acima do anel)",
+                  "enum": ["f", "y", "k", "s"],
+                  "example": "s"
+                },
+                "stalk-surface-below-ring": {
+                  "type": "string",
+                  "description": "Superfície do caule (abaixo do anel)",
+                  "enum": ["f", "y", "k", "s"],
+                  "example": "s"
+                },
+                "stalk-color-above-ring": {
+                  "type": "string",
+                  "description": "Cor do caule (acima do anel)",
+                  "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"],
+                  "example": "w"
+                },
+                "stalk-color-below-ring": {
+                  "type": "string",
+                  "description": "Cor do caule (abaixo do anel)",
+                  "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"],
+                  "example": "w"
+                },
+                "veil-color": {
+                  "type": "string",
+                  "description": "Cor do véu",
+                  "enum": ["n", "o", "w", "y"],
+                  "example": "w"
+                },
+                "ring-number": {
+                  "type": "string",
+                  "description": "Número de anéis",
+                  "enum": ["n", "o", "t"],
+                  "example": "o"
+                },
+                "ring-type": {
+                  "type": "string",
+                  "description": "Tipo de anel",
+                  "enum": ["c", "e", "f", "l", "n", "p", "s", "z"],
+                  "example": "p"
+                },
+                "spore-print-color": {
+                  "type": "string",
+                  "description": "Cor da impressão de esporos",
+                  "enum": ["k", "n", "b", "h", "r", "o", "u", "w", "y"],
+                  "example": "k"
+                },
+                "population": {
+                  "type": "string",
+                  "description": "População",
+                  "enum": ["a", "c", "n", "s", "v", "y"],
+                  "example": "s"
+                },
+                "habitat": {
+                  "type": "string",
+                  "description": "Habitat",
+                  "enum": ["g", "l", "m", "p", "u", "w", "d"],
+                  "example": "u"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Predição realizada com sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "prediction": {
+                  "type": "string",
+                  "description": "Classificação do cogumelo",
+                  "enum": ["edible", "poisonous"],
+                  "example": "poisonous"
+                },
+                "edible": {
+                  "type": "boolean",
+                  "description": "Indica se é comestível",
+                  "example": false
+                },
+                "poisonous": {
+                  "type": "boolean",
+                  "description": "Indica se é venenoso",
+                  "example": true
+                },
+                "timestamp": {
+                  "type": "string",
+                  "description": "Timestamp da predição",
+                  "example": "2024-01-01T12:00:00Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Erro na predição: dados inválidos"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/predict/batch": {
+      "post": {
+        "tags": ["Predição"],
+        "summary": "Predição em Lote",
+        "description": "Faz predição em lote de múltiplos cogumelos",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "cap-shape", "cap-surface", "cap-color", "bruises", "odor",
+                  "gill-attachment", "gill-spacing", "gill-size", "gill-color",
+                  "stalk-shape", "stalk-root", "stalk-surface-above-ring", "stalk-surface-below-ring",
+                  "stalk-color-above-ring", "stalk-color-below-ring", "veil-color",
+                  "ring-number", "ring-type", "spore-print-color", "population", "habitat"
+                ],
+                "properties": {
+                  "cap-shape": {
+                    "type": "string",
+                    "enum": ["b", "c", "x", "f", "k", "s"],
+                    "example": "x"
+                  },
+                  "cap-surface": {
+                    "type": "string",
+                    "enum": ["f", "g", "y", "s"],
+                    "example": "s"
+                  },
+                  "cap-color": {
+                    "type": "string",
+                    "enum": ["n", "b", "c", "g", "r", "p", "u", "e", "w", "y"],
+                    "example": "y"
+                  },
+                  "bruises": {
+                    "type": "string",
+                    "enum": ["t", "f"],
+                    "example": "t"
+                  },
+                  "odor": {
+                    "type": "string",
+                    "enum": ["a", "l", "c", "y", "f", "m", "n", "p", "s"],
+                    "example": "p"
+                  },
+                  "gill-attachment": {
+                    "type": "string",
+                    "enum": ["a", "d", "f", "n"],
+                    "example": "f"
+                  },
+                  "gill-spacing": {
+                    "type": "string",
+                    "enum": ["c", "w", "d"],
+                    "example": "c"
+                  },
+                  "gill-size": {
+                    "type": "string",
+                    "enum": ["b", "n"],
+                    "example": "n"
+                  },
+                  "gill-color": {
+                    "type": "string",
+                    "enum": ["k", "n", "b", "h", "g", "r", "o", "p", "u", "e", "w", "y"],
+                    "example": "k"
+                  },
+                  "stalk-shape": {
+                    "type": "string",
+                    "enum": ["e", "t"],
+                    "example": "e"
+                  },
+                  "stalk-root": {
+                    "type": "string",
+                    "enum": ["b", "c", "u", "e", "z", "r", "?"],
+                    "example": "e"
+                  },
+                  "stalk-surface-above-ring": {
+                    "type": "string",
+                    "enum": ["f", "y", "k", "s"],
+                    "example": "s"
+                  },
+                  "stalk-surface-below-ring": {
+                    "type": "string",
+                    "enum": ["f", "y", "k", "s"],
+                    "example": "s"
+                  },
+                  "stalk-color-above-ring": {
+                    "type": "string",
+                    "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"],
+                    "example": "w"
+                  },
+                  "stalk-color-below-ring": {
+                    "type": "string",
+                    "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"],
+                    "example": "w"
+                  },
+                  "veil-color": {
+                    "type": "string",
+                    "enum": ["n", "o", "w", "y"],
+                    "example": "w"
+                  },
+                  "ring-number": {
+                    "type": "string",
+                    "enum": ["n", "o", "t"],
+                    "example": "o"
+                  },
+                  "ring-type": {
+                    "type": "string",
+                    "enum": ["c", "e", "f", "l", "n", "p", "s", "z"],
+                    "example": "p"
+                  },
+                  "spore-print-color": {
+                    "type": "string",
+                    "enum": ["k", "n", "b", "h", "r", "o", "u", "w", "y"],
+                    "example": "k"
+                  },
+                  "population": {
+                    "type": "string",
+                    "enum": ["a", "c", "n", "s", "v", "y"],
+                    "example": "s"
+                  },
+                  "habitat": {
+                    "type": "string",
+                    "enum": ["g", "l", "m", "p", "u", "w", "d"],
+                    "example": "u"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Predições em lote realizadas com sucesso",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "prediction": {
+                    "type": "string",
+                    "enum": ["edible", "poisonous"],
+                    "example": "poisonous"
+                  },
+                  "edible": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "poisonous": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "example": "2024-01-01T12:00:00Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Erro na predição em lote: dados inválidos"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "tags": ["Métricas"],
+        "summary": "Obter Métricas",
+        "description": "Retorna as métricas de performance do modelo de classificação",
+        "responses": {
+          "200": {
+            "description": "Métricas obtidas com sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accuracy": {
+                  "type": "number",
+                  "description": "Acurácia do modelo",
+                  "example": 1.0
+                },
+                "f1_score": {
+                  "type": "number",
+                  "description": "F1-Score do modelo",
+                  "example": 1.0
+                },
+                "precision": {
+                  "type": "number",
+                  "description": "Precisão do modelo",
+                  "example": 1.0
+                },
+                "recall": {
+                  "type": "number",
+                  "description": "Recall do modelo",
+                  "example": 1.0
+                },
+                "model_type": {
+                  "type": "string",
+                  "description": "Tipo do modelo utilizado",
+                  "example": "RandomForestClassifier"
+                },
+                "dataset_size": {
+                  "type": "integer",
+                  "description": "Tamanho do dataset de treinamento",
+                  "example": 8124
+                },
+                "features_used": {
+                  "type": "integer",
+                  "description": "Número de features utilizadas",
+                  "example": 21
+                },
+                "test_samples": {
+                  "type": "integer",
+                  "description": "Número de amostras de teste",
+                  "example": 1625
+                },
+                "created_at": {
+                  "type": "string",
+                  "description": "Data de criação das métricas",
+                  "example": "2024-01-01T12:00:00Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metrics/recalculate": {
+      "post": {
+        "tags": ["Métricas"],
+        "summary": "Recalcular Métricas",
+        "description": "Recalcula as métricas do modelo executando o script de geração",
+        "responses": {
+          "200": {
+            "description": "Métricas recalculadas com sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Métricas recalculadas com sucesso!"
+                },
+                "metrics": {
+                  "type": "object",
+                  "properties": {
+                    "accuracy": {
+                      "type": "number",
+                      "example": 1.0
+                    },
+                    "f1_score": {
+                      "type": "number",
+                      "example": 1.0
+                    },
+                    "precision": {
+                      "type": "number",
+                      "example": 1.0
+                    },
+                    "recall": {
+                      "type": "number",
+                      "example": 1.0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Script de geração não encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Script de geração de métricas não encontrado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Erro ao recalcular métricas"
+                },
+                "details": {
+                  "type": "string",
+                  "example": "Detalhes do erro"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Mushroom": {
+      "type": "object",
+      "required": [
+        "cap-shape", "cap-surface", "cap-color", "bruises", "odor",
+        "gill-attachment", "gill-spacing", "gill-size", "gill-color",
+        "stalk-shape", "stalk-root", "stalk-surface-above-ring", "stalk-surface-below-ring",
+        "stalk-color-above-ring", "stalk-color-below-ring", "veil-color",
+        "ring-number", "ring-type", "spore-print-color", "population", "habitat"
+      ],
+      "properties": {
+        "cap-shape": {
+          "type": "string",
+          "description": "Forma do chapéu (b=bell, c=conical, x=convex, f=flat, k=knobbed, s=sunken)",
+          "enum": ["b", "c", "x", "f", "k", "s"]
+        },
+        "cap-surface": {
+          "type": "string",
+          "description": "Superfície do chapéu (f=fibrous, g=grooves, y=scaly, s=smooth)",
+          "enum": ["f", "g", "y", "s"]
+        },
+        "cap-color": {
+          "type": "string",
+          "description": "Cor do chapéu (n=brown, b=buff, c=cinnamon, g=gray, r=green, p=pink, u=purple, e=red, w=white, y=yellow)",
+          "enum": ["n", "b", "c", "g", "r", "p", "u", "e", "w", "y"]
+        },
+        "bruises": {
+          "type": "string",
+          "description": "Machucados (t=bruises, f=no)",
+          "enum": ["t", "f"]
+        },
+        "odor": {
+          "type": "string",
+          "description": "Odor (a=almond, l=anise, c=creosote, y=fishy, f=foul, m=musty, n=none, p=pungent, s=spicy)",
+          "enum": ["a", "l", "c", "y", "f", "m", "n", "p", "s"]
+        },
+        "gill-attachment": {
+          "type": "string",
+          "description": "Anexo das lâminas (a=attached, d=descending, f=free, n=notched)",
+          "enum": ["a", "d", "f", "n"]
+        },
+        "gill-spacing": {
+          "type": "string",
+          "description": "Espaçamento das lâminas (c=close, w=crowded, d=distant)",
+          "enum": ["c", "w", "d"]
+        },
+        "gill-size": {
+          "type": "string",
+          "description": "Tamanho das lâminas (b=broad, n=narrow)",
+          "enum": ["b", "n"]
+        },
+        "gill-color": {
+          "type": "string",
+          "description": "Cor das lâminas (k=black, n=brown, b=buff, h=chocolate, g=gray, r=green, o=orange, p=pink, u=purple, e=red, w=white, y=yellow)",
+          "enum": ["k", "n", "b", "h", "g", "r", "o", "p", "u", "e", "w", "y"]
+        },
+        "stalk-shape": {
+          "type": "string",
+          "description": "Forma do caule (e=enlarging, t=tapering)",
+          "enum": ["e", "t"]
+        },
+        "stalk-root": {
+          "type": "string",
+          "description": "Raiz do caule (b=bulbous, c=club, u=cup, e=equal, z=rhizomorphs, r=rooted, ?=missing)",
+          "enum": ["b", "c", "u", "e", "z", "r", "?"]
+        },
+        "stalk-surface-above-ring": {
+          "type": "string",
+          "description": "Superfície do caule acima do anel (f=fibrous, y=scaly, k=silky, s=smooth)",
+          "enum": ["f", "y", "k", "s"]
+        },
+        "stalk-surface-below-ring": {
+          "type": "string",
+          "description": "Superfície do caule abaixo do anel (f=fibrous, y=scaly, k=silky, s=smooth)",
+          "enum": ["f", "y", "k", "s"]
+        },
+        "stalk-color-above-ring": {
+          "type": "string",
+          "description": "Cor do caule acima do anel (n=brown, b=buff, c=cinnamon, g=gray, o=orange, p=pink, e=red, w=white, y=yellow)",
+          "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"]
+        },
+        "stalk-color-below-ring": {
+          "type": "string",
+          "description": "Cor do caule abaixo do anel (n=brown, b=buff, c=cinnamon, g=gray, o=orange, p=pink, e=red, w=white, y=yellow)",
+          "enum": ["n", "b", "c", "g", "o", "p", "e", "w", "y"]
+        },
+        "veil-color": {
+          "type": "string",
+          "description": "Cor do véu (n=brown, o=orange, w=white, y=yellow)",
+          "enum": ["n", "o", "w", "y"]
+        },
+        "ring-number": {
+          "type": "string",
+          "description": "Número de anéis (n=none, o=one, t=two)",
+          "enum": ["n", "o", "t"]
+        },
+        "ring-type": {
+          "type": "string",
+          "description": "Tipo de anel (c=cobwebby, e=evanescent, f=flaring, l=large, n=none, p=pendant, s=sheathing, z=zone)",
+          "enum": ["c", "e", "f", "l", "n", "p", "s", "z"]
+        },
+        "spore-print-color": {
+          "type": "string",
+          "description": "Cor da impressão de esporos (k=black, n=brown, b=buff, h=chocolate, r=green, o=orange, u=purple, w=white, y=yellow)",
+          "enum": ["k", "n", "b", "h", "r", "o", "u", "w", "y"]
+        },
+        "population": {
+          "type": "string",
+          "description": "População (a=abundant, c=clustered, n=numerous, p=scattered, s=several, v=solitary, y=yet)",
+          "enum": ["a", "c", "n", "p", "s", "v", "y"]
+        },
+        "habitat": {
+          "type": "string",
+          "description": "Habitat (g=grasses, l=leaves, m=meadows, p=paths, u=urban, w=waste, d=woods)",
+          "enum": ["g", "l", "m", "p", "u", "w", "d"]
+        }
+      }
+    },
+    "Prediction": {
+      "type": "object",
+      "properties": {
+        "prediction": {
+          "type": "string",
+          "description": "Classificação do cogumelo",
+          "enum": ["edible", "poisonous"]
+        },
+        "edible": {
+          "type": "boolean",
+          "description": "Indica se é comestível"
+        },
+        "poisonous": {
+          "type": "boolean",
+          "description": "Indica se é venenoso"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp da predição"
+        }
+      }
+    },
+    "Metrics": {
+      "type": "object",
+      "properties": {
+        "accuracy": {
+          "type": "number",
+          "description": "Acurácia do modelo"
+        },
+        "f1_score": {
+          "type": "number",
+          "description": "F1-Score do modelo"
+        },
+        "precision": {
+          "type": "number",
+          "description": "Precisão do modelo"
+        },
+        "recall": {
+          "type": "number",
+          "description": "Recall do modelo"
+        },
+        "model_type": {
+          "type": "string",
+          "description": "Tipo do modelo utilizado"
+        },
+        "dataset_size": {
+          "type": "integer",
+          "description": "Tamanho do dataset de treinamento"
+        },
+        "features_used": {
+          "type": "integer",
+          "description": "Número de features utilizadas"
+        },
+        "test_samples": {
+          "type": "integer",
+          "description": "Número de amostras de teste"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Data de criação das métricas"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Predição",
+      "description": "Endpoints para classificação de cogumelos"
+    },
+    {
+      "name": "Métricas",
+      "description": "Endpoints para visualização e recálculo de métricas do modelo"
+    }
+  ]
+}
